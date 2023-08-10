@@ -11,9 +11,7 @@ import { NextUIProvider } from '@nextui-org/react';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <NextUIProvider>
-    <main className="light text-foreground bg-background">
-      <App />
-    </main>
+    <App />
   </NextUIProvider>
 );
 // If you want to start measuring performance in your app, pass a function
