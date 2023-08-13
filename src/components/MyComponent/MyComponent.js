@@ -1,18 +1,23 @@
 import React from "react";
-import { Button } from '@nextui-org/button';
-import { Link } from "@nextui-org/react";
 import './MyComponent.css'
+import {Accordion, AccordionItem} from "@nextui-org/react";
 
-const Component = () => <Button color="primary" variant="shadow">Click Me</Button>;
-function MyComponent(props) {
-
-    return (
-        <div className="my-div">
-            <Component />
-            <Link href="#" size="lg">{props.name}</Link>
-        </div>
-    );
-
+function MyComponent() {
+    const defaultContent =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+  return (
+    <Accordion selectionMode="multiple">
+      <AccordionItem key="1" aria-label="Day 1" title="Day 1">
+        {defaultContent}
+      </AccordionItem>
+      <AccordionItem key="2" aria-label="Day 2" title="Day 2">
+        {defaultContent}
+      </AccordionItem>
+      <AccordionItem key="3" aria-label="Day 3" title="Day 3">
+        {defaultContent}
+      </AccordionItem>
+    </Accordion>
+  );
 }
 
 export default MyComponent;
