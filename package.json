@@ -2,6 +2,7 @@
   "name": "logiclient",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@nextui-org/button": "^2.0.5",
     "@nextui-org/react": "^2.0.8",
