@@ -16,7 +16,7 @@ function NextCard() {
           alt="Card background"
           className="object-cover rounded-xl"
           src={RJPG}
-          width={200}
+          width={270}
         />
       </CardBody>
     </Card>
