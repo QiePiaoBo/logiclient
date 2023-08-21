@@ -4,7 +4,7 @@ function HomeContent() {
 
     return (
         <div>
-            <img class="float-left" src="../logo225.png" />
+            <img class="float-left" alt="logo of logiclient" src="../logo225.png" />
             <p className="clear-right">
                 1. To be or not to be, that is the question.
             </p>

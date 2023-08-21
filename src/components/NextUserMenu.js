@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Link, RadioGroup, Radio} from "@nextui-org/react";
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Link} from "@nextui-org/react";
 import GlobalContext from "../resources/GlobalContext";
 
 function  NextUserMenu(props) {
 
-    const {userName, setUserName} = useContext(GlobalContext);
+    const {setUserName} = useContext(GlobalContext);
 
     const dealingWithKey = (key) => {
         if(key === 'userinfo'){

@@ -6,7 +6,7 @@ import NextUserMenu from "../NextUserMenu";
 
 function Header(props) {
 
-    const { userName, setUserName } = useContext(GlobalContext);
+    const { userName } = useContext(GlobalContext);
 
     return (
         <div className="h-full w-5/6">

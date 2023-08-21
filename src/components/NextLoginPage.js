@@ -19,47 +19,47 @@ function NextLoginPage() {
                         selectedKey={selected}
                         onSelectionChange={setSelected}
                     >
-                        <Tab key="login" title="Login">
+                        <Tab key="login" title="登录">
                             <form className="flex flex-col gap-4">
-                                <Input isRequired label="Email" placeholder="Enter your email" type="email" />
+                                <Input isRequired label="邮箱" placeholder="Enter your email" type="email" />
                                 <Input
                                     isRequired
-                                    label="Password"
+                                    label="密码"
                                     placeholder="Enter your password"
                                     type="password"
                                 />
                                 <p className="text-center text-small">
-                                    Need to create an account?{" "}
+                                    需要创建新用户?{" "}
                                     <Link size="sm" onPress={() => setSelected("sign-up")}>
-                                        Sign up
+                                        注册
                                     </Link>
                                 </p>
                                 <div className="flex gap-2 justify-end">
                                     <Button fullWidth color="primary" onPress={doLogin}>
-                                        Login
+                                        登录
                                     </Button>
                                 </div>
                             </form>
                         </Tab>
-                        <Tab key="sign-up" title="Sign up">
+                        <Tab key="sign-up" title="注册">
                             <form className="flex flex-col gap-4 h-[300px]">
-                                <Input isRequired label="Name" placeholder="Enter your name" type="password" />
-                                <Input isRequired label="Email" placeholder="Enter your email" type="email" />
+                                <Input isRequired label="用户名" placeholder="Enter your name" type="password" />
+                                <Input isRequired label="邮箱" placeholder="Enter your email" type="email" />
                                 <Input
                                     isRequired
-                                    label="Password"
+                                    label="密码"
                                     placeholder="Enter your password"
                                     type="password"
                                 />
                                 <p className="text-center text-small">
-                                    Already have an account?{" "}
+                                    已经有账户?{" "}
                                     <Link size="sm" onPress={() => setSelected("login")}>
-                                        Login
+                                        登录
                                     </Link>
                                 </p>
                                 <div className="flex gap-2 justify-end">
                                     <Button fullWidth color="primary">
-                                        Sign up
+                                        注册
                                     </Button>
                                 </div>
                             </form>

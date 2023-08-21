@@ -5,6 +5,7 @@ function Home() {
   return (
     <div>
       <HomeTitle />
+      <br />
       <HomeContent />
     </div>
   );
