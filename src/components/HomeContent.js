@@ -6,31 +6,31 @@ function HomeContent() {
         <div>
             <img class="float-left" alt="logo of logiclient" src="../logo225.png" />
             <p className="clear-right">
-                1. To be or not to be, that is the question.
+                1. 前端
             </p>
             <br />
             <p className="clear-right">
-                2. All the world’s a stage, and all the men and women merely players.
+                2. 后端
             </p>
             <br />
             <p className="clear-right">
-                3. To thine own self be true.
+                3. 客户端
             </p>
             <br />
             <p className="clear-right">
-                4. If you have no purpose, do nothing.
+                4. 硬件
             </p>
             <br />
             <p className="clear-right">
-                5. Brevity is the soul of wit.
+                5. 网络
             </p>
             <br />
             <p className="clear-right">
-                6. A rose by any other name would smell as sweet.
+                6. 服务器
             </p>
             <br />
-            <p className="clear-right">
-                7. Precision is the difference between a butcher and a surgeon.
+            <p className="clear-right text-cyan-300">
+            <em>枕月绾袖临风 扣舷独饮千钟 不见韶华白首 浮生一梦从容</em>
             </p>
         </div>
     );
