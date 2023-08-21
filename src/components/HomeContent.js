@@ -4,7 +4,7 @@ function HomeContent() {
 
     return (
         <div>
-            <img class="float-left" alt="logo of logiclient" src="../logo225.png" />
+            <img className="float-left" alt="logo of logiclient" src="../logo225.png" />
             <p className="clear-right">
                 1. 前端
             </p>

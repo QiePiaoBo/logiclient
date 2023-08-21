@@ -7,6 +7,7 @@ import Confetti from '../Confetti';
 import Login from '../Login';
 import { useState } from 'react';
 import GlobalContext from '../../resources/GlobalContext';
+import Blog from '../Blog';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path='/home' element={<Home />} />
             <Route path='/chat' element={<Chat />} />
+            <Route path='/blog' element={<Blog />} />
             <Route path='/login' element={<Login />} />
             <Route path='/confetti' element={<Confetti />} />
           </Route>

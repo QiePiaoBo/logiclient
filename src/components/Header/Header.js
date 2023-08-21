@@ -18,6 +18,9 @@ function Header(props) {
                     <JumpLink to="/chat">Chat </JumpLink>
                 </Link>
                 <Link size="lg">
+                    <JumpLink to="/blog">Blog </JumpLink>
+                </Link>
+                <Link size="lg">
                     <JumpLink to="/confetti">Confetti </JumpLink>
                 </Link>
                 {userName ? (
