@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { Tabs, Tab, Input, Link, Button, Card, CardBody, CardHeader } from "@nextui-org/react";
+import { Tabs, Tab, Input, Link, Button, Card, CardBody } from "@nextui-org/react";
 import GlobalContext from "../resources/GlobalContext";
 
 function NextLoginPage() {
     const [selected, setSelected] = React.useState("login");
-    const {userName, setUserName} = useContext(GlobalContext);
+    const {setUserName} = useContext(GlobalContext);
     const doLogin = () => {
         setUserName("dylan");
     }
