@@ -1,8 +1,12 @@
-import NextCheckBoxGroup from "../components/NextCheckBoxGroup";
+import HomeContent from "../components/HomeContent";
+import HomeTitle from "../components/HomeTitle";
 
 function Home() {
   return (
-    <NextCheckBoxGroup />
+    <div>
+      <HomeTitle />
+      <HomeContent />
+    </div>
   );
 }
 
