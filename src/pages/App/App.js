@@ -18,24 +18,21 @@ function App() {
     <GlobalProvider>
       <BrowserRouter>
         <Routes>
-          {/* 基础路由 */}
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path='/home' element={<Home />} />
             <Route path='/login' element={<Login />} />
           </Route>
-          {/* 内容相关路由 */}
           <Route path='/main/' element={<Basic />}>
             <Route index element={<Blog />} />
             <Route path='/main/blog' element={<Blog />} />
             <Route path='/main/article/:id/:common' element={<Article />} />
           </Route>
-          {/* 工具相关路由 */}
           <Route path='/tool/' element={<Basic />}>
+            <Route index element={<Confetti />} />
             <Route path='/tool/confetti' element={<Confetti />} />
             <Route path='/tool/chat' element={<Chat />} />
           </Route>
-          {/* 账号相关路由 */}
           <Route path='/account/' element={<Basic />} >
             <Route path='/account/info' element={<AccountInfo />} />
             <Route path='/account/manage' element={<AccountManage />} />
