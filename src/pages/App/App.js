@@ -5,30 +5,45 @@ import Chat from '../Chat';
 import NoMatch from '../NoMatch';
 import Confetti from '../Confetti';
 import Login from '../Login';
-import { useState } from 'react';
-import GlobalContext from '../../resources/GlobalContext';
+import {GlobalProvider} from '../../resources/GlobalContext';
 import Blog from '../Blog';
+import Basic from '../../Layout/Basic';
+import Article from '../Article';
+import AccountInfo from '../AccountInfo';
+import AccountManage from '../AccountManage';
 
 function App() {
 
-  const [userName, setUserName] = useState('');
-
   return (
-    <GlobalContext.Provider value={{ userName, setUserName }}>
+    <GlobalProvider>
       <BrowserRouter>
         <Routes>
+          {/* 基础路由 */}
           <Route path='/' element={<Layout />}>
             <Route index element={<Home />} />
             <Route path='/home' element={<Home />} />
-            <Route path='/chat' element={<Chat />} />
-            <Route path='/blog' element={<Blog />} />
             <Route path='/login' element={<Login />} />
-            <Route path='/confetti' element={<Confetti />} />
+          </Route>
+          {/* 内容相关路由 */}
+          <Route path='/main/' element={<Basic />}>
+            <Route index element={<Blog />} />
+            <Route path='/main/blog' element={<Blog />} />
+            <Route path='/main/article/:id/:common' element={<Article />} />
+          </Route>
+          {/* 工具相关路由 */}
+          <Route path='/tool/' element={<Basic />}>
+            <Route path='/tool/confetti' element={<Confetti />} />
+            <Route path='/tool/chat' element={<Chat />} />
+          </Route>
+          {/* 账号相关路由 */}
+          <Route path='/account/' element={<Basic />} >
+            <Route path='/account/info' element={<AccountInfo />} />
+            <Route path='/account/manage' element={<AccountManage />} />
           </Route>
           <Route path='*' element={<NoMatch />} />
         </Routes>
       </BrowserRouter>
-    </GlobalContext.Provider>
+    </GlobalProvider>
   );
 }
 

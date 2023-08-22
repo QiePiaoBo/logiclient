@@ -1,8 +1,9 @@
 import MyComponent from "../components/MyComponent/MyComponent";
 function Confetti() {
     return (
-        
-    <MyComponent />
+        <div className="w-5/6">
+            <MyComponent />
+        </div>
     );
 
 }

@@ -15,7 +15,7 @@ function  NextUserMenu(props) {
             setUserName('');
         }
     }
-
+    
     return (
         <Dropdown>
           <DropdownTrigger>
