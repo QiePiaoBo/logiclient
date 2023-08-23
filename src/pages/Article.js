@@ -6,7 +6,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 async function getContentFromQiNiu(url) {
     const response = await fetch(url);
     const text = await response.text();
-    console.log('text = ' + text);
+    //console.log('text = ' + text);
     return text;
 }
 
@@ -27,15 +27,24 @@ function Article(props) {
     }
 
     if (data && data.data) {
-        const article = JSON.stringify(data.data, null, 2);
+        let article = null;
+        if (data && data.data && data.data.fileName) {
+            article = data.data.fileName;
+        }
         return (
-            <div className="prose prose-slate">
-                <p> Article: {article}</p>
-                {text ?
-                    (<ReactMarkdown children={text}></ReactMarkdown>)
-                    :
-                    (<ReactMarkdown>#### Content Lost</ReactMarkdown>)
-                }
+            <div className="w-5/6">
+                <div className="text-center text-5xl font-extrabold">
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+                        《{article}》
+                    </span>
+                </div>
+                <div className="mt-6 prose prose-slate">
+                    {text ?
+                        (<ReactMarkdown children={text}></ReactMarkdown>)
+                        :
+                        (<ReactMarkdown>#### Content Lost</ReactMarkdown>)
+                    }
+                </div>
             </div>
         );
     }
