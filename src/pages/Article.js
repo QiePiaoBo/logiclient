@@ -38,7 +38,7 @@ function Article(props) {
                         《{article}》
                     </span>
                 </div>
-                <div className="mt-6 prose prose-slate">
+                <div className="mt-6 w-full prose max-w-none">
                     {text ?
                         (<ReactMarkdown children={text}></ReactMarkdown>)
                         :

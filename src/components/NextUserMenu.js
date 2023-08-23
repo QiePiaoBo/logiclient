@@ -4,7 +4,7 @@ import GlobalContext from "../resources/GlobalContext";
 
 function  NextUserMenu(props) {
 
-    const {setUserName} = useContext(GlobalContext);
+    const {setUserName,setUserId} = useContext(GlobalContext);
 
     const dealingWithKey = (key) => {
         if(key === 'userinfo'){
@@ -12,7 +12,8 @@ function  NextUserMenu(props) {
         }else if(key === 'changepwd'){
             alert("Ok, let's go to change your password.")
         }else if(key === 'logout'){
-            setUserName('');
+            setUserName(null);
+            setUserId(null);
         }
     }
     

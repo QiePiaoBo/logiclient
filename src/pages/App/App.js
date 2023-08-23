@@ -26,7 +26,7 @@ function App() {
           <Route path='/main/' element={<Basic />}>
             <Route index element={<Blog />} />
             <Route path='/main/blog' element={<Blog />} />
-            <Route path='/main/article/:id/:common' element={<Article />} />
+            <Route path='/main/article/:id' element={<Article />} />
           </Route>
           <Route path='/tool/' element={<Basic />}>
             <Route index element={<Confetti />} />

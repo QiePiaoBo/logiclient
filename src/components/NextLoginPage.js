@@ -4,8 +4,9 @@ import GlobalContext from "../resources/GlobalContext";
 
 function NextLoginPage() {
     const [selected, setSelected] = React.useState("login");
-    const {setUserName} = useContext(GlobalContext);
+    const {setUserId,setUserName} = useContext(GlobalContext);
     const doLogin = () => {
+        setUserId(1);
         setUserName("dylan");
     }
     return (

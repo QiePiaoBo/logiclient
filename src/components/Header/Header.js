@@ -6,7 +6,7 @@ import NextUserMenu from "../NextUserMenu";
 
 function Header(props) {
 
-    const { userName,setUserName } = useContext(GlobalContext);
+    const { userName,setUserName,userId,setUserId } = useContext(GlobalContext);
     const variant = "menu";
     const color = "primary";
     return (
@@ -44,7 +44,7 @@ function Header(props) {
                             </DropdownItem>
                             <DropdownItem >
                                 {userName ? (
-                                    <JumpLink onClick={()=>{setUserName('')}}> Logout </JumpLink>
+                                    <JumpLink onClick={()=>{setUserName(null);setUserId(null)}}> Logout </JumpLink>
                                 ) : (
                                     <JumpLink to="/login"> Login </JumpLink>
                                 )}

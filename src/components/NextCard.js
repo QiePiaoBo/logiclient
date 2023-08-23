@@ -7,17 +7,17 @@ function NextCard(props) {
 
   const navigate = useNavigate();
 
-  function handlePress(href, id, common) {
-    console.log(href, id, common);
-    navigate(href + "/" + id + "/" + (common?common : "Hello World"));
+  function handlePress(href, id) {
+    console.log(href, id);
+    navigate(href + "/" + id);
   }
 
   return (
-    <Card className="py-4" isHoverable isPressable onPress={()=> handlePress(props.href, props.id, props.common)}>
+    <Card className="py-4" isHoverable isPressable onPress={()=> handlePress(props.href, props.id)}>
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-        <p className="text-tiny uppercase font-bold">Daily Mix</p>
-        <small className="text-default-500">12 Tracks</small>
-        <h4 className="font-bold text-large">Frontend Radio</h4>
+        <p className="text-tiny uppercase font-bold">{props.fileName}</p>
+        <small className="text-default-500">{props.description}</small>
+        <h4 className="font-bold text-large">{props.subTitle}</h4>
       </CardHeader>
       <CardBody className=" py-2">
         <Image
