@@ -11,6 +11,7 @@ import Basic from '../../Layout/Basic';
 import Article from '../Article';
 import AccountInfo from '../AccountInfo';
 import AccountManage from '../AccountManage';
+import Editor from '../Editor';
 
 function App() {
 
@@ -27,6 +28,8 @@ function App() {
             <Route index element={<Blog />} />
             <Route path='/main/blog' element={<Blog />} />
             <Route path='/main/article/:id' element={<Article />} />
+            <Route path='/main/edit/:type' element={<Editor />} />
+            
           </Route>
           <Route path='/tool/' element={<Basic />}>
             <Route index element={<Confetti />} />

@@ -1,0 +1,34 @@
+import React from "react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Link, useDisclosure } from "@nextui-org/react";
+
+function CommonModal(props) {
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    return (
+        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+            <ModalContent>
+                <ModalHeader className="flex flex-col gap-1">{props.title}</ModalHeader>
+                <ModalBody>
+                    <p>
+                        {props.content}
+                    </p>
+                </ModalBody>
+                <ModalFooter>
+                    {/* <Button color="danger" variant="light" onPress={onClose}>
+                        Close
+                    </Button> */}
+                    {props.btnUrl1 && props.btnName1 &&
+                        <Button href={props.btnUrl1} as={Link} color="primary" showAnchorIcon variant="solid">
+                            {props.btnName1}
+                        </Button>
+                    }
+                    {props.btnUrl2 && props.btnName2 &&
+                        <Button href={props.btnUrl2} as={Link} color="primary" showAnchorIcon variant="solid">
+                            {props.btnName2}
+                        </Button>
+                    }
+                </ModalFooter>
+            </ModalContent>
+        </Modal>
+    );
+}
+export default CommonModal;

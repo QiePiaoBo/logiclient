@@ -6,7 +6,7 @@ import NextUserMenu from "../NextUserMenu";
 
 function Header(props) {
 
-    const { userName,setUserName,userId,setUserId } = useContext(GlobalContext);
+    const { userName,setUserName,setUserId } = useContext(GlobalContext);
     const variant = "menu";
     const color = "primary";
     return (

@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, Link} from "@nextui-org/react";
 
-function NextLoginModal() {
+function NeedLoginButton() {
 
   return (
     <>
@@ -17,4 +17,4 @@ function NextLoginModal() {
     </>
   );
 }
-export default NextLoginModal;
+export default NeedLoginButton;

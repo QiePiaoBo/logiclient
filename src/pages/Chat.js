@@ -1,4 +1,4 @@
-import NextLoginModal from "../components/NextLoginModal";
+import NeedLoginButton from "../components/NeedLoginButton";
 import GlobalContext from "../resources/GlobalContext";
 import { useContext } from "react";
 
@@ -12,7 +12,7 @@ function Chat() {
             {userName ? (
                 <p>Chat Component Here</p>
             ) : (
-                <NextLoginModal />
+                <NeedLoginButton />
             )}
         </div>
     );

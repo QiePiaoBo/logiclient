@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import NextCard from "../components/NextCard";
 import GlobalContext from "../resources/GlobalContext";
 import { getUrlByEnv } from "../resources/utils"
+import FloatButton from "../components/FloatButton";
 
 function Blog() {
 
@@ -20,6 +21,7 @@ function Blog() {
         body: JSON.stringify(requestData),
       });
       const data = await response.json();
+      console.log(data);
       setBlogData(data);
       setBlogLoading(false);
     }
@@ -41,6 +43,7 @@ function Blog() {
   }
 
   if (blogData && blogData.data) {
+    console.log(JSON.stringify(blogData.data, null, 2));
     return (
       <div className="z-0 w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {blogData.data.map((item) => (
@@ -48,11 +51,12 @@ function Blog() {
             key={item.id}
             href="/main/article"
             id={item.id}
-            fileName={item.fileName}
+            title={item.title}
             subTitle={item.subTitle}
             description={item.description}
           />
         ))}
+        <FloatButton jumpUrl="/main/edit/blog"/>
       </div>
     );
   }

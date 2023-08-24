@@ -28,8 +28,8 @@ function Article(props) {
 
     if (data && data.data) {
         let article = null;
-        if (data && data.data && data.data.fileName) {
-            article = data.data.fileName;
+        if (data && data.data && data.data.title) {
+            article = data.data.title;
         }
         return (
             <div className="w-5/6">

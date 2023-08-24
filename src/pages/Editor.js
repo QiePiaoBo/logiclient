@@ -1,0 +1,135 @@
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import { Textarea, Input, Button, ButtonGroup } from "@nextui-org/react";
+import { getUrlByEnv } from "../resources/utils"
+import CommonModal from "../components/CommonModal";
+
+function Editor() {
+
+    const params = useParams();
+    const [title, setTitle] = useState("");
+    const [subTitle, setSubTitle] = useState("");
+    const [desc, setDesc] = useState("");
+    const [file, setFile] = useState(null);
+    const [checkError, setCheckError] = useState(false);
+    const [fileTypeError, setFileTypeError] = useState(false);
+    const [uploadSuccess, setUploadSuccess] = useState(false);
+
+    // 选择文件上传组件
+    const fileInput = document.querySelector('input[type="file"]');
+    // 清空选择的文件
+    const handleClearFile = () => {
+        fileInput.value = '';
+    };
+    // 监听文件选择
+    const handleFileChange = (event) => {
+        setFile(event.target.files[0]);
+    };
+    // 提交
+    const handleSubmit = () => {
+        if (!title | !desc | !file) {
+            setCheckError(true);
+        }
+        if (file && !file.name.endsWith('.md')) {
+            setFileTypeError(true);
+        }
+        setUploadSuccess(true);
+        // uploadFile(title, desc, file);
+    };
+    // 重置
+    const handleReset = () => {
+        setDesc("");
+        setTitle("");
+        setFile(null);
+        setSubTitle("");
+        setCheckError(false);
+        setFileTypeError(false);
+        handleClearFile();
+    };
+    // 发送请求
+    async function uploadFile(title, subTitle, desc, file) {
+        const requestData = { title: title, subTitle: subTitle, description: desc, file: file, fileType: "笔记" }
+        const response = await fetch(getUrlByEnv("/blog/article/upload"), {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestData),
+        });
+        const data = await response.json();
+        console.log(data);
+    }
+
+    return (
+        <div className="w-5/6">
+            <div className="text-center text-2xl font-extrabold">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-rose-400 to-purple-400">
+                    《{params.type}》
+                </span>
+            </div>
+            {checkError
+                &&
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-red-400">
+                    错误！必填项缺失
+                </span>
+            }
+            {fileTypeError
+                &&
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-red-400">
+                    错误！文件类型必须为md
+                </span>
+            }
+            {uploadSuccess && 
+                <CommonModal title="title" content="content" btnUrl1="#" btnName1="点我"/>
+            }
+            <Input
+                isRequired
+                className="w-full mt-2"
+                key="title"
+                label="标题"
+                radius="none"
+                value={title}
+                onValueChange={setTitle}
+                variant="underlined"
+            />
+            <Input
+                isRequired
+                className="w-full mt-2"
+                key="subTitle"
+                label="副标题"
+                radius="none"
+                value={subTitle}
+                onValueChange={setSubTitle}
+                variant="underlined"
+            />
+            <Textarea
+                isRequired
+                variant="underlined"
+                label="描述"
+                labelPlacement="outside"
+                placeholder="输入描述信息"
+                value={desc}
+                onValueChange={setDesc}
+                className="w-full mt-4"
+            />
+            <label className="mt-4 block">
+                <input
+                    type="file"
+                    className="block w-full text-sm text-slate-500
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-full file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-violet-50 file:text-violet-700
+                    hover:file:bg-violet-100"
+                    onChange={handleFileChange}
+                />
+            </label>
+            <ButtonGroup className="w-full mt-6">
+                <Button className="bg-gradient-to-tr from-green-300 to-cyan-300 shadow-lg w-1/5" onClick={handleSubmit}>提交</Button>
+                <Button className="bg-gradient-to-tr from-pink-300 to-yellow-300 shadow-lg w-1/5" onClick={handleReset}>重置</Button>
+            </ButtonGroup>
+        </div>
+    )
+}
+
+export default Editor;

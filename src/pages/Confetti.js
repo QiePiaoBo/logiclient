@@ -1,8 +1,8 @@
-import MyComponent from "../components/MyComponent/MyComponent";
+import MyAccordion from "../components/MyAccordion/MyAccordion";
 function Confetti() {
     return (
         <div className="w-5/6">
-            <MyComponent />
+            <MyAccordion />
         </div>
     );
 
