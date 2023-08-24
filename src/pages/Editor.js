@@ -14,6 +14,7 @@ function Editor() {
     const [checkError, setCheckError] = useState(false);
     const [fileTypeError, setFileTypeError] = useState(false);
     const [uploadSuccess, setUploadSuccess] = useState(false);
+    const [responseData, setResponseData] = useState({});
 
     // 选择文件上传组件
     const fileInput = document.querySelector('input[type="file"]');
@@ -26,15 +27,16 @@ function Editor() {
         setFile(event.target.files[0]);
     };
     // 提交
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (!title | !desc | !file) {
             setCheckError(true);
         }
         if (file && !file.name.endsWith('.md')) {
             setFileTypeError(true);
         }
+        await uploadFile(title, desc, file);
+        console.log("responseData=" + JSON.stringify(responseData, null, 2));
         setUploadSuccess(true);
-        // uploadFile(title, desc, file);
     };
     // 重置
     const handleReset = () => {
@@ -57,7 +59,7 @@ function Editor() {
             body: JSON.stringify(requestData),
         });
         const data = await response.json();
-        console.log(data);
+        setResponseData(data);
     }
 
     return (
@@ -79,8 +81,27 @@ function Editor() {
                     错误！文件类型必须为md
                 </span>
             }
-            {uploadSuccess && 
-                <CommonModal title="title" content="content" btnUrl1="#" btnName1="点我"/>
+            {uploadSuccess && responseData && responseData.status !== 100000 &&
+                <CommonModal
+                    isOpen={uploadSuccess}
+                    onOpenChange={() => setUploadSuccess(false)}
+                    title={responseData.message}
+                    content={JSON.stringify(responseData, null, 2)}
+                    btnUrl1={"/login"}
+                    btnName1="登录"
+                />
+            }
+            {uploadSuccess && responseData && responseData.data &&
+                <CommonModal
+                    isOpen={uploadSuccess}
+                    onOpenChange={() => setUploadSuccess(false)}
+                    title="上传成功"
+                    content={JSON.stringify(responseData, null, 2)}
+                    btnUrl1={"/main/article/" + responseData.data.id}
+                    btnName1="详情"
+                    btnUrl2="/main/blog"
+                    btnName2="主页"
+                />
             }
             <Input
                 isRequired

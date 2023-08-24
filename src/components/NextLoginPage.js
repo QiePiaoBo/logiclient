@@ -1,16 +1,52 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import { Tabs, Tab, Input, Link, Button, Card, CardBody } from "@nextui-org/react";
 import GlobalContext from "../resources/GlobalContext";
+import {getUrlByEnv} from "../resources/utils";
+import CommonModal from "./CommonModal";
 
 function NextLoginPage() {
     const [selected, setSelected] = React.useState("login");
-    const {setUserId,setUserName} = useContext(GlobalContext);
-    const doLogin = () => {
-        setUserId(1);
-        setUserName("dylan");
+    const { setUserId, setUserName } = useContext(GlobalContext);
+    const [needAlert, setNeedAlert] = useState(false);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [responseData, setResponseData] = useState({});
+    // 发送登录请求
+    const doLogin = async () => {
+        // 在这里使用username和password
+        console.log(username + "@" + password);
+        const requestData = {userName: username, userPassword: password};
+        const response = await fetch(getUrlByEnv("/licence/act/login"),{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestData),
+        }); 
+        const resData = await response.json();
+        console.log("resData=" + JSON.stringify(resData,null,2));
+        setResponseData(resData);
+        if(resData && resData.status !== 100000){
+            setNeedAlert(true);
+        }else{
+            console.log('id:', resData.data.id);
+            console.log('name:', resData.data.userName);
+            setUserId(resData.data.id);
+            setUserName(resData.data.userName);
+        }
     }
+
     return (
         <div className="flex flex-col w-full">
+            
+            {needAlert &&
+                <CommonModal
+                    isOpen={needAlert}
+                    onOpenChange={() => setNeedAlert(false)}
+                    title="错误"
+                    content={JSON.stringify(responseData, null, 2)}
+                />
+            }
             <Card className="max-w-full w-[340px] h-[400px]">
                 <CardBody className="overflow-hidden">
                     <Tabs
@@ -22,12 +58,21 @@ function NextLoginPage() {
                     >
                         <Tab key="login" title="登录">
                             <form className="flex flex-col gap-4">
-                                <Input isRequired label="邮箱" placeholder="Enter your email" type="email" />
+                                <Input 
+                                    isRequired 
+                                    label="用户名" 
+                                    placeholder="Enter your name." 
+                                    type="text" 
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                />
                                 <Input
                                     isRequired
                                     label="密码"
-                                    placeholder="Enter your password"
+                                    placeholder="Enter your password."
                                     type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                                 <p className="text-center text-small">
                                     需要创建新用户?{" "}
