@@ -11,6 +11,7 @@ function NextLoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [responseData, setResponseData] = useState({});
+    const [alertTitle, setAlertTitle] = useState('');
     // 发送登录请求
     const doLogin = async () => {
         // 在这里使用username和password
@@ -27,8 +28,11 @@ function NextLoginPage() {
         console.log("resData=" + JSON.stringify(resData,null,2));
         setResponseData(resData);
         if(resData && resData.status !== 100000){
+            setAlertTitle("错误");
             setNeedAlert(true);
         }else{
+            setAlertTitle("成功");
+            setNeedAlert(true);
             console.log('id:', resData.data.id);
             console.log('name:', resData.data.userName);
             setUserId(resData.data.id);
@@ -43,7 +47,7 @@ function NextLoginPage() {
                 <CommonModal
                     isOpen={needAlert}
                     onOpenChange={() => setNeedAlert(false)}
-                    title="错误"
+                    title={alertTitle}
                     content={JSON.stringify(responseData, null, 2)}
                 />
             }

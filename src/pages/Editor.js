@@ -28,7 +28,7 @@ function Editor() {
     };
     // 提交
     const handleSubmit = async () => {
-        if (!title | !desc | !file) {
+        if (!title | !subTitle | !desc | !file) {
             setCheckError(true);
             return;
         }
@@ -36,8 +36,8 @@ function Editor() {
             setFileTypeError(true);
             return;
         }
-
-        await uploadFile(title, desc, file);
+        console.log("")
+        await uploadFile(title, subTitle, desc, file);
         console.log("responseData=" + JSON.stringify(responseData, null, 2));
         setUploadSuccess(true);
     };
@@ -84,7 +84,7 @@ function Editor() {
                     错误！文件类型必须为md
                 </span>
             }
-            {uploadSuccess && responseData && responseData.status !== 100000 &&
+            {uploadSuccess && responseData && responseData.status === 100014 &&
                 <CommonModal
                     isOpen={uploadSuccess}
                     onOpenChange={() => setUploadSuccess(false)}
@@ -92,6 +92,14 @@ function Editor() {
                     content={JSON.stringify(responseData, null, 2)}
                     btnUrl1={"/login"}
                     btnName1="登录"
+                />
+            }
+            {uploadSuccess && responseData && responseData.status !== 100014 &&
+                <CommonModal
+                    isOpen={uploadSuccess}
+                    onOpenChange={() => setUploadSuccess(false)}
+                    title={responseData.message}
+                    content={JSON.stringify(responseData, null, 2)}
                 />
             }
             {uploadSuccess && responseData && responseData.data &&
