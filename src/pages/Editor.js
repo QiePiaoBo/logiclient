@@ -30,10 +30,13 @@ function Editor() {
     const handleSubmit = async () => {
         if (!title | !desc | !file) {
             setCheckError(true);
+            return;
         }
         if (file && !file.name.endsWith('.md')) {
             setFileTypeError(true);
+            return;
         }
+
         await uploadFile(title, desc, file);
         console.log("responseData=" + JSON.stringify(responseData, null, 2));
         setUploadSuccess(true);
