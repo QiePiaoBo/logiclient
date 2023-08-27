@@ -7,7 +7,7 @@ export function getUrlByEnv(url) {
     // 拼接完整的URL
     if (isLocal) {
         url = url.replace('/blog', 'http://172.26.0.152:9002');
-        url = url.replace("/licence", "http://127.0.0.1:9000");
+        url = url.replace("/licence", "http://172.26.0.151:9000");
         return url;
     } else {
         return url;
@@ -15,14 +15,17 @@ export function getUrlByEnv(url) {
 }
 // 登出时清理资源
 export function CleanCurUser() {
-    const {setUserId, setUserName} = useContext(GlobalContext);
-    const cleanCurUser = () => {
-        setUserId(null);
-        setUserName(null);
+    const {userId, userName, setUserId, setUserName} = useContext(GlobalContext);
+    const doCleanCurUser = () => {
+        console.log("before set cur user " + userName + "&" + userId + ", local " + localStorage.getItem("userName") + "&" +  + localStorage.getItem("userId"));
         localStorage.removeItem('userName');
         localStorage.removeItem('userId');
+        console.log("after set cur user " + userName + "&" + userId + ", local " + localStorage.getItem("userName") + "&" +  + localStorage.getItem("userId"));
+        setUserId(null);
+        setUserName(null);
+        console.log("after remove cur user " + userName + "&" + userId + ", local " + localStorage.getItem("userName") + "&" +  + localStorage.getItem("userId"));
     };
-    return cleanCurUser;
+    return doCleanCurUser;
 }
 // 发送登出请求
 export async function doLogout() {

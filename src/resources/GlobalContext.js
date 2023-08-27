@@ -16,10 +16,10 @@ export const GlobalProvider = ({ children }) => {
   useEffect(() => {
     const storedUserName = localStorage.getItem('userName');
     const storedUserId = localStorage.getItem('userId');
-    if (storedUserName) {
+    if (storedUserName && storedUserName!=="null") {
       setUserName(storedUserName);
     }
-    if (storedUserId) {
+    if (storedUserId && storedUserId !== "null") {
       setUserId(storedUserId);
     }
   }, []);

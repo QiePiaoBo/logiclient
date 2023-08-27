@@ -63,9 +63,6 @@ function Editor() {
         const response = await fetch(getUrlByEnv("/blog/article/upload"), {
             method: "POST",
             credentials: 'include',
-            headers: {
-                "Content-Type": "application/json",
-            },
             body: formData,
         });
         const data = await response.json();
