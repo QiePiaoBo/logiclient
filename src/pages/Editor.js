@@ -53,13 +53,20 @@ function Editor() {
     };
     // 发送请求
     async function uploadFile(title, subTitle, desc, file) {
-        const requestData = { title: title, subTitle: subTitle, description: desc, file: file, fileType: "笔记" }
+        // const requestData = { title: title, subTitle: subTitle, description: desc, file: file, fileType: "笔记" }
+        const formData = new FormData();
+        formData.append("title",title);
+        formData.append("subTitle",subTitle);
+        formData.append("description",desc);
+        formData.append("file",file);
+        formData.append("fileType","笔记" );
         const response = await fetch(getUrlByEnv("/blog/article/upload"), {
             method: "POST",
+            credentials: 'include',
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(requestData),
+            body: formData,
         });
         const data = await response.json();
         setResponseData(data);

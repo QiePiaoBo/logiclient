@@ -1,7 +1,7 @@
-import React, { useContext,useState } from "react";
+import React, { useContext, useState } from "react";
 import { Tabs, Tab, Input, Link, Button, Card, CardBody } from "@nextui-org/react";
 import GlobalContext from "../resources/GlobalContext";
-import {getUrlByEnv} from "../resources/utils";
+import { doLogin } from "../resources/utils";
 import CommonModal from "./CommonModal";
 
 function NextLoginPage() {
@@ -12,25 +12,14 @@ function NextLoginPage() {
     const [password, setPassword] = useState('');
     const [responseData, setResponseData] = useState({});
     const [alertTitle, setAlertTitle] = useState('');
-    // 发送登录请求
-    const doLogin = async () => {
-        // 在这里使用username和password
-        console.log(username + "@" + password);
-        const requestData = {userName: username, userPassword: password};
-        const response = await fetch(getUrlByEnv("/licence/act/login"),{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(requestData),
-        }); 
-        const resData = await response.json();
-        console.log("resData=" + JSON.stringify(resData,null,2));
+
+    const login = async () => {
+        const resData = await doLogin(username,password);
         setResponseData(resData);
-        if(resData && resData.status !== 100000){
+        if (resData && resData.status !== 100000) {
             setAlertTitle("错误");
             setNeedAlert(true);
-        }else{
+        } else {
             setAlertTitle("成功");
             setNeedAlert(true);
             console.log('id:', resData.data.id);
@@ -39,10 +28,10 @@ function NextLoginPage() {
             setUserName(resData.data.userName);
         }
     }
-
+    
     return (
         <div className="flex flex-col w-full">
-            
+
             {needAlert &&
                 <CommonModal
                     isOpen={needAlert}
@@ -62,11 +51,11 @@ function NextLoginPage() {
                     >
                         <Tab key="login" title="登录">
                             <form className="flex flex-col gap-4">
-                                <Input 
-                                    isRequired 
-                                    label="用户名" 
-                                    placeholder="Enter your name." 
-                                    type="text" 
+                                <Input
+                                    isRequired
+                                    label="用户名"
+                                    placeholder="Enter your name."
+                                    type="text"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                 />
@@ -85,7 +74,7 @@ function NextLoginPage() {
                                     </Link>
                                 </p>
                                 <div className="flex gap-2 justify-end">
-                                    <Button fullWidth color="primary" onPress={doLogin}>
+                                    <Button fullWidth color="primary" onPress={login}>
                                         登录
                                     </Button>
                                 </div>

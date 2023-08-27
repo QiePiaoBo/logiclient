@@ -11,10 +11,12 @@ function Blog() {
   const [blogLoading, setBlogLoading] = useState(null);
 
   useEffect(() => {
-    const requestData = { userId: userId };
+    
+    const requestData = { userId: "" };
     async function fetchData() {
       const response = await fetch(getUrlByEnv("/blog/article/all"), {
         method: "POST",
+        credentials: 'include',
         headers: {
           "Content-Type": "application/json",
         },

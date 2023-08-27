@@ -3,10 +3,12 @@ import { Link as JumpLink } from "react-router-dom";
 import { Link, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
 import GlobalContext from "../../resources/GlobalContext";
 import NextUserMenu from "../NextUserMenu";
+import { doLogout,CleanCurUser } from "../../resources/utils";
 
 function Header(props) {
 
-    const { userName,setUserName,setUserId } = useContext(GlobalContext);
+    const { userName } = useContext(GlobalContext);
+    const doCleanCurUser = CleanCurUser();
     const variant = "menu";
     const color = "primary";
     return (
@@ -44,7 +46,7 @@ function Header(props) {
                             </DropdownItem>
                             <DropdownItem >
                                 {userName ? (
-                                    <JumpLink onClick={()=>{setUserName(null);setUserId(null)}}> Logout </JumpLink>
+                                    <JumpLink onClick={()=>{doCleanCurUser();doLogout();}}> Logout </JumpLink>
                                 ) : (
                                     <JumpLink to="/login"> Login </JumpLink>
                                 )}

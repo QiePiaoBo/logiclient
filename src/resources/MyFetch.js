@@ -10,7 +10,10 @@ function MyFetch(url) {
   useEffect(() => {
     console.log('finalUrl = ' + finalUrl);
     async function fetchData() {
-      const response = await fetch(finalUrl);
+      const response = await fetch(finalUrl,{
+        method: 'GET',
+        credentials: 'include'
+      });
       const data = await response.json();
       setData(data);
       setLoading(false);

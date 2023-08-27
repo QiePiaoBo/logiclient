@@ -2,7 +2,7 @@ import React from "react";
 import {useState, useEffect} from 'react';
 
 const GlobalContext = React.createContext({
-  userName: 'dylan',
+  userName: '',
   userId: '',
   setUserName: () => {},
   setUserId: () => {}
