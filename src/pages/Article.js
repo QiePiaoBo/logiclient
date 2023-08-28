@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import MyFetch from "../resources/MyFetch";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import gfm from "remark-gfm";
 
 async function getContentFromQiNiu(url) {
     const response = await fetch(url);
@@ -40,9 +41,9 @@ function Article(props) {
                 </div>
                 <div className="mt-6 w-full prose max-w-none">
                     {text ?
-                        (<ReactMarkdown children={text}></ReactMarkdown>)
+                        (<ReactMarkdown children={text} remarkPlugins={[gfm]}></ReactMarkdown>)
                         :
-                        (<ReactMarkdown>#### Content Lost</ReactMarkdown>)
+                        (<ReactMarkdown remarkPlugins={[gfm]}>#### Content Lost</ReactMarkdown>)
                     }
                 </div>
             </div>
