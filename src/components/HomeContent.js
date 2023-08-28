@@ -1,40 +1,24 @@
 import React from "react";
 
-function HomeContent() {
-
+function HomeContent(props) {
+    const { proverbs = {}, favors = [] } = props;
+    const defaultFirst = '枕月绾袖临风 扣舷独饮千钟';
+    const defaultSecond = '不见韶华白首 浮生一梦从容';
+    const defaultFavors = ['Java', 'React', 'Harmony', 'Esp32', 'TCP', 'Debian CentOS Ubuntu'];
     return (
         <div>
             <img className="float-left" alt="logo of logiclient" src="../logo225.png" />
-            <p className="clear-right">
-                1. Java 
-            </p>
-            <br />
-            <p className="clear-right">
-                2. React
-            </p>
-            <br />
-            <p className="clear-right">
-                3. Harmony
-            </p>
-            <br />
-            <p className="clear-right">
-                4. Esp32
-            </p>
-            <br />
-            <p className="clear-right">
-                5. TCP 
-            </p>
-            <br />
-            <p className="clear-right">
-                6. Debian CentOS Ubuntu
-            </p>
-            <br />
+            {(favors && favors.length > 0 ? favors : defaultFavors).map((item, index) => (
+                <React.Fragment key={index}>
+                    <p className="clear-right">{index + 1}. {item}</p>
+                    <br />
+                </React.Fragment>
+            ))}
             <p className="clear-right text-cyan-300">
-            <em>枕月绾袖临风 扣舷独饮千钟 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不见韶华白首 浮生一梦从容</em>
+                <em>{(proverbs && proverbs.first) || defaultFirst} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{(proverbs && proverbs.second) || defaultSecond}</em>
             </p>
         </div>
     );
-
 
 }
 
