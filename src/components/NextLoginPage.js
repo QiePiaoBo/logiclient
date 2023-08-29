@@ -22,8 +22,6 @@ function NextLoginPage() {
         } else {
             setAlertTitle("成功");
             setNeedAlert(true);
-            console.log('id:', resData.data.id);
-            console.log('name:', resData.data.userName);
             setUserId(resData.data.id);
             setUserName(resData.data.userName);
         }

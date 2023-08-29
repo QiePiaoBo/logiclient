@@ -11,7 +11,7 @@ function Blog() {
   const [blogLoading, setBlogLoading] = useState(null);
 
   useEffect(() => {
-    
+
     const requestData = { userId: "" };
     async function fetchData() {
       const response = await fetch(getUrlByEnv("/blog/article/all"), {
@@ -23,7 +23,6 @@ function Blog() {
         body: JSON.stringify(requestData),
       });
       const data = await response.json();
-      console.log(data);
       setBlogData(data);
       setBlogLoading(false);
     }
@@ -45,20 +44,27 @@ function Blog() {
   }
 
   if (blogData && blogData.data) {
-    console.log(JSON.stringify(blogData.data, null, 2));
     return (
-      <div className="z-0 w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {blogData.data.map((item) => (
-          <NextCard
-            key={item.id}
-            href="/main/article"
-            id={item.id}
-            title={item.title}
-            subTitle={item.subTitle}
-            description={item.description}
-          />
-        ))}
-        <FloatButton jumpUrl="/main/edit/blog"/>
+      <div className="w-4/5 ">
+        <div className="text-2xl font-extrabold mb-4 text-center">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+            Blog
+          </span>
+        </div>
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+          {blogData.data.map((item) => (
+            <NextCard
+              key={item.id}
+              href="/main/article"
+              id={item.id}
+              title={item.title}
+              subTitle={item.subTitle}
+              description={item.description}
+            />
+          ))}
+
+        </div>
+        <FloatButton jumpUrl="/main/edit/blog" />
       </div>
     );
   }

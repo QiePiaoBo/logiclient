@@ -5,10 +5,13 @@ import { useContext } from "react";
 function Chat() {
 
     const { userName } = useContext(GlobalContext);
-    console.log(userName);
     return (
-        <div className="w-5/6 text-center">
-        <p>{userName}</p>
+        <div className="w-5/6 ">
+            <div className="text-2xl font-extrabold mb-4 text-center">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+                    Chat
+                </span>
+            </div>
             {userName ? (
                 <p>Chat Component Here</p>
             ) : (

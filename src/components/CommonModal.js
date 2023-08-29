@@ -3,7 +3,6 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Link 
 
 function CommonModal(props) {
     const { isOpen, onOpenChange } = props;
-    console.log("isOpen=" + isOpen);
     return (
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
             <ModalContent>

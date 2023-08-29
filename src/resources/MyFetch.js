@@ -8,7 +8,6 @@ function MyFetch(url) {
   // 根据当前环境选择服务器地址
   const finalUrl = getUrlByEnv(url);
   useEffect(() => {
-    console.log('finalUrl = ' + finalUrl);
     async function fetchData() {
       const response = await fetch(finalUrl,{
         method: 'GET',

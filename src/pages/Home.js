@@ -13,14 +13,13 @@ function Home() {
         credentials: 'include'
       });
       const responseJson = await response.json();
-      console.log(JSON.stringify(responseJson, null, 2));
       setHomeData(responseJson.data);
     }
     fetchData();
   },[setHomeData])
 
   return (
-    <div className="w-96">
+    <div className="w-4/5 text-center">
       <HomeTitle title={homeData && homeData.title} />
       <br />
       <HomeContent favors={homeData && homeData.favors} proverbs={homeData && homeData.proverbs}/>

@@ -4,7 +4,6 @@ import { Accordion, AccordionItem } from "@nextui-org/react";
 
 function MyAccordion(props) {
   const { items } = props;
-  console.log("got items = " + items);
   return (
     <Accordion 
       isCompact 

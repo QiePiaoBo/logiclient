@@ -7,7 +7,6 @@ import gfm from "remark-gfm";
 async function getContentFromQiNiu(url) {
     const response = await fetch(url);
     const text = await response.text();
-    //console.log('text = ' + text);
     return text;
 }
 

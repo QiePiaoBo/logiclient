@@ -3,12 +3,12 @@ import MyAccordion from "../components/MyAccordion/MyAccordion";
 import GlobalContext from "../resources/GlobalContext";
 import NeedLoginButton from "../components/NeedLoginButton";
 import { getUrlByEnv } from "../resources/utils";
+import FloatButton from "../components/FloatButton";
 
 function Confetti() {
     const { userName, userId } = useContext(GlobalContext);
     const [confettiData, setConfettiData] = useState({});
     useEffect(() => {
-        console.log("userId=" + userId);
         const requestData = { userId: userId };
         async function fetchData() {
             const response = await fetch(getUrlByEnv("/blog/confetti/get-confetti"), {
@@ -20,15 +20,20 @@ function Confetti() {
                 body: JSON.stringify(requestData),
             });
             const data = await response.json();
-            console.log("data=" + JSON.stringify(data,null, 2));
             setConfettiData(data);
         }
-        fetchData();
+        if (userId) {
+            fetchData();
+        }
     }, [userId]);
 
     return (
-        <div className="w-5/6">
-            <p>{userName}</p>
+        <div className="w-11/12 ">
+            <div className="text-2xl font-extrabold mb-4 text-center">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+                    Confetti
+                </span>
+            </div>
             {userName ? (
                 confettiData && confettiData.data && confettiData.data.length > 0 && (
                     <MyAccordion items={confettiData.data} />
@@ -36,6 +41,7 @@ function Confetti() {
             ) : (
                 <NeedLoginButton />
             )}
+            <FloatButton jumpUrl="/main/edit/confetti"/>
         </div>
     );
 

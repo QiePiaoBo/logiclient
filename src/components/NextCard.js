@@ -8,15 +8,14 @@ function NextCard(props) {
   const navigate = useNavigate();
 
   function handlePress(href, id) {
-    console.log(href, id);
     navigate(href + "/" + id);
   }
 
   return (
     <Card className="py-4" isHoverable isPressable onPress={()=> handlePress(props.href, props.id)}>
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-        <p className="text-tiny uppercase font-bold">{props.title}</p>
-        <small className="text-default-500">{props.description}</small>
+        <p className="text-default-500 uppercase font-bold">{props.title}</p>
+        <p className="text-tiny truncate overflow-hidden">{props.description}</p>
         <h4 className="font-bold text-large">{props.subTitle}</h4>
       </CardHeader>
       <CardBody className=" py-2">
