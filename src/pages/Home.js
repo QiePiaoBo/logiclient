@@ -20,7 +20,7 @@ function Home() {
   },[setHomeData])
 
   return (
-    <div>
+    <div className="w-96">
       <HomeTitle title={homeData && homeData.title} />
       <br />
       <HomeContent favors={homeData && homeData.favors} proverbs={homeData && homeData.proverbs}/>

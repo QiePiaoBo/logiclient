@@ -1,30 +1,62 @@
 import React from "react";
 import './MyAccordion.css'
-import {Accordion, AccordionItem} from "@nextui-org/react";
+import { Accordion, AccordionItem } from "@nextui-org/react";
 
-function MyAccordion() {
-    const defaultContent =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+function MyAccordion(props) {
+  const { items } = props;
+  console.log("got items = " + items);
   return (
-    <Accordion selectionMode="multiple" >
-      <AccordionItem key="1" aria-label="Accordion 1" subtitle="Press to expand" title="Accordion 1">
-        {defaultContent}
-      </AccordionItem>
-      <AccordionItem
-        key="2"
-        aria-label="Accordion 2"
-        subtitle={
-          <span>
-            Press to expand <strong>key 2</strong>
-          </span>
-        }
-        title="Accordion 2"
+    <Accordion 
+      isCompact 
+      selectionMode="single" 
+      variant="splitted"
+      motionProps={{
+        variants: {
+          enter: {
+            y: 0,
+            opacity: 1,
+            height: "auto",
+            transition: {
+              height: {
+                type: "spring",
+                stiffness: 500,
+                damping: 30,
+                duration: 1,
+              },
+              opacity: {
+                easings: "ease",
+                duration: 1,
+              },
+            },
+          },
+          exit: {
+            y: -10,
+            opacity: 0,
+            height: 0,
+            transition: {
+              height: {
+                easings: "ease",
+                duration: 0.25,
+              },
+              opacity: {
+                easings: "ease",
+                duration: 0.3,
+              },
+            },
+          },
+        },
+      }}
       >
-        {defaultContent}
-      </AccordionItem>
-      <AccordionItem key="3" aria-label="Accordion 3" subtitle="Press to expand" title="Accordion 3">
-        {defaultContent}
-      </AccordionItem>
+      {items.map(item => (
+        <AccordionItem
+          key={item.id}
+          aria-label={item.title}
+          subtitle="Confetti"
+          title={item.title}
+        >
+          <div style={{ whiteSpace: 'pre-wrap' }}>{item.content}</div>
+        </AccordionItem>
+      ))}
     </Accordion>
   );
 }
