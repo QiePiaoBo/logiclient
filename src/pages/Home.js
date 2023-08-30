@@ -2,6 +2,7 @@ import React,{useEffect,useState} from "react";
 import HomeContent from "../components/HomeContent";
 import HomeTitle from "../components/HomeTitle";
 import { getUrlByEnv } from "../resources/utils";
+import HomeTimeline from "../components/HomeTimeline";
 
 function Home() {
   const [homeData, setHomeData] = useState(null);
@@ -19,10 +20,11 @@ function Home() {
   },[setHomeData])
 
   return (
-    <div className="w-4/5 text-center">
+    <div className="w-4/5">
       <HomeTitle title={homeData && homeData.title} />
       <br />
-      <HomeContent favors={homeData && homeData.favors} proverbs={homeData && homeData.proverbs}/>
+      {/* <HomeContent favors={homeData && homeData.favors} proverbs={homeData && homeData.proverbs}/> */}
+      <HomeTimeline />
     </div>
   );
 }

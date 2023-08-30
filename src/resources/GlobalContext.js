@@ -11,7 +11,8 @@ const GlobalContext = React.createContext({
 export const GlobalProvider = ({ children }) => {
   const [userName, setUserName] = useState('');
   const [userId, setUserId] = useState('');
-
+  const [theme, setTheme] = useState('light');
+  
   // 从 localStorage 中获取 userName
   useEffect(() => {
     const storedUserName = localStorage.getItem('userName');
