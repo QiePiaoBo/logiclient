@@ -4,7 +4,7 @@ import {Button, Link} from "@nextui-org/react";
 function NeedLoginButton() {
 
   return (
-    <>
+    <div className="w-full flex justify-center">
        <Button
       href="/login"
       as={Link}
@@ -14,7 +14,7 @@ function NeedLoginButton() {
     >
       未登录
     </Button>
-    </>
+    </div>
   );
 }
 export default NeedLoginButton;

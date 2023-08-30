@@ -95,10 +95,10 @@ function Editor() {
 
 
     return (
-        <div className="w-5/6">
-            <div className="text-center text-2xl font-extrabold">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-rose-400 to-purple-400">
-                    《{params.type}》
+        <div className="w-2/3">
+            <div className="text-2xl font-extrabold mb-4 text-center">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-blue-300">
+                《{params.type}》
                 </span>
             </div>
             {checkError
@@ -201,8 +201,8 @@ function Editor() {
                 </label>
             }
             <ButtonGroup className="w-full mt-6">
-                <Button className="bg-gradient-to-tr from-green-300 to-cyan-300 shadow-lg w-1/5" onClick={handleSubmit}>提交</Button>
-                <Button className="bg-gradient-to-tr from-pink-300 to-yellow-300 shadow-lg w-1/5" onClick={handleReset}>重置</Button>
+                <Button className="bg-gradient-to-tr from-green-300 to-green-600 shadow-lg w-1/5" onClick={handleSubmit}>提交</Button>
+                <Button className="bg-gradient-to-tr from-red-300 to-red-600 shadow-lg w-1/5" onClick={handleReset}>重置</Button>
             </ButtonGroup>
         </div>
     )

@@ -1,8 +1,10 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import HomeContent from "../components/HomeContent";
 import HomeTitle from "../components/HomeTitle";
 import { getUrlByEnv } from "../resources/utils";
 import HomeTimeline from "../components/HomeTimeline";
+import NewFooter from "../components/NewFooter";
+
 
 function Home() {
   const [homeData, setHomeData] = useState(null);
@@ -17,14 +19,17 @@ function Home() {
       setHomeData(responseJson.data);
     }
     fetchData();
-  },[setHomeData])
+  }, [setHomeData])
 
   return (
-    <div className="w-4/5">
-      <HomeTitle title={homeData && homeData.title} />
-      <br />
-      {/* <HomeContent favors={homeData && homeData.favors} proverbs={homeData && homeData.proverbs}/> */}
-      <HomeTimeline />
+    <div className="w-full flex flex-col items-center">
+      <div className="w-3/5">
+        <HomeTitle title={homeData && homeData.title} />
+        <br />
+        {/* <HomeContent favors={homeData && homeData.favors} proverbs={homeData && homeData.proverbs}/> */}
+        <HomeTimeline />
+      </div>
+      <NewFooter />
     </div>
   );
 }

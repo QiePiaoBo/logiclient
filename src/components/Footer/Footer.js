@@ -1,6 +1,6 @@
 import React from "react";
 import { Link as JumpLink } from "react-router-dom";
-import { Link } from "@nextui-org/react";
+import { Link } from "@material-tailwind/react";
 function Footer(props) {
     return (
             <nav className="bg-white h-full w-full text-center shadow-lg " >

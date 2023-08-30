@@ -8,7 +8,7 @@ function Chat() {
     return (
         <div className="w-5/6 ">
             <div className="text-2xl font-extrabold mb-4 text-center">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-blue-300">
                     Chat
                 </span>
             </div>

@@ -20,7 +20,7 @@ function NextUserMenu(props) {
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Link size="lg">
+        <Link>
           {props.name}
         </Link>
       </DropdownTrigger>

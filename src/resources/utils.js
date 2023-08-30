@@ -15,7 +15,7 @@ export function getUrlByEnv(url) {
 }
 // 登出时清理资源
 export function CleanCurUser() {
-    const {userId, userName, setUserId, setUserName} = useContext(GlobalContext);
+    const {setUserId, setUserName} = useContext(GlobalContext);
     const doCleanCurUser = () => {
         localStorage.removeItem('userName');
         localStorage.removeItem('userId');
@@ -30,6 +30,7 @@ export async function doLogout() {
         method: 'GET',
         credentials: 'include',
     });
+    console.log("response=" + JSON.stringify(response, null, 2));
 }
 
 // 发送登录请求
