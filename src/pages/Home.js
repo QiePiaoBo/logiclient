@@ -27,7 +27,7 @@ function Home() {
         <HomeTitle title={homeData && homeData.title} />
         <br />
         {/* <HomeContent favors={homeData && homeData.favors} proverbs={homeData && homeData.proverbs}/> */}
-        <HomeTimeline />
+        <HomeTimeline items={homeData && homeData.articles}/>
       </div>
       <NewFooter />
     </div>
