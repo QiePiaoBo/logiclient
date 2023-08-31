@@ -3,6 +3,7 @@ import NextCard from "../components/NextCard";
 import GlobalContext from "../resources/GlobalContext";
 import { getUrlByEnv } from "../resources/utils"
 import FloatButton from "../components/FloatButton";
+import MaterialCard from "../components/MaterialCard";
 
 function Blog() {
 
@@ -53,7 +54,7 @@ function Blog() {
         </div>
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
           {blogData.data.map((item) => (
-            <NextCard
+            <MaterialCard
               key={item.id}
               href="/main/article"
               id={item.id}
