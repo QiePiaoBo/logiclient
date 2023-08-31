@@ -10,7 +10,7 @@ import {
 } from "@material-tailwind/react";
 import { PowerIcon, StopIcon, StarIcon } from "@heroicons/react/24/solid";
 import Link from "@mui/material/Link";
-
+import {formatDate} from "../resources/utils"
 
 function HomeTimeline(props) {
   const { items = [] } = props;
@@ -42,12 +42,12 @@ function HomeTimeline(props) {
               </TimelineIcon>
               <div className="flex flex-col gap-1">
                 <Link href={"/main/article/" + item.id} color="inherit">
-                  <Typography variant="h6" color="blue-gray">
+                  <Typography variant="h6" color="blue-gray" className="line-clamp-1">
                     {item.title}
                   </Typography>
                 </Link>
-                <Typography variant="small" color="gray" className="font-normal">
-                  {item.createTime}
+                <Typography variant="small" color="gray" className="font-normal line-clamp-1">
+                {String.toString(formatDate(item.createTime),null,2)}
                 </Typography>
               </div>
             </TimelineHeader>
