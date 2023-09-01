@@ -34,7 +34,7 @@ function HomeTimeline(props) {
           </TimelineHeader>
         </TimelineItem>
         {props && props.items && props.items.map((item) => (
-          <TimelineItem className="h-28">
+          <TimelineItem className="h-28" key={item.id}>
             <TimelineConnector className="!w-[78px]" />
             <TimelineHeader className="relative rounded-xl border border-blue-gray-50 bg-white py-3 pl-4 pr-8 shadow-lg shadow-blue-gray-900/5">
               <TimelineIcon className="p-3" variant="ghost" color="green">
@@ -42,12 +42,31 @@ function HomeTimeline(props) {
               </TimelineIcon>
               <div className="flex flex-col gap-1">
                 <Link href={"/main/article/" + item.id} color="inherit">
-                  <Typography variant="h6" color="blue-gray" className="line-clamp-1">
+                  <Typography 
+                  variant="h6" 
+                  color="blue-gray" 
+                  className="overflow-hidden mb-2"
+                  style={{
+                      display: '-webkit-box',
+                      WebkitLineClamp: 1,
+                      WebkitBoxOrient: 'vertical',
+                  }}
+                  >
                     {item.title}
                   </Typography>
                 </Link>
-                <Typography variant="small" color="gray" className="font-normal line-clamp-1">
-                {String.toString(formatDate(item.createTime),null,2)}
+                <Typography 
+                variant="small" 
+                color="gray" 
+                className="font-normal overflow-hidden mb-2"
+                style={{
+                    display: '-webkit-box',
+                    WebkitLineClamp: 1,
+                    WebkitBoxOrient: 'vertical',
+                }}
+                
+                >
+                {formatDate(item.createTime)}
                 </Typography>
               </div>
             </TimelineHeader>

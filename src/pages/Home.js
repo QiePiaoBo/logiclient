@@ -23,7 +23,7 @@ function Home() {
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="w-3/5">
+      <div className="w-4/5">
         <HomeTitle title={homeData && homeData.title} />
         <br />
         {/* <HomeContent favors={homeData && homeData.favors} proverbs={homeData && homeData.proverbs}/> */}

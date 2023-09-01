@@ -50,7 +50,7 @@ export async function doLogin (username, password) {
     return resData;
 }
 // 简化字符串
-export async function formatDate(dateTimeString) {
+export function formatDate(dateTimeString) {
     const date = new Date(dateTimeString);
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -58,5 +58,6 @@ export async function formatDate(dateTimeString) {
     const hour = date.getHours().toString().padStart(2, '0');
     const minute = date.getMinutes().toString().padStart(2, '0');
     console.log("res=" + `${year}-${month}-${day} ${hour}:${minute}`);
-    return `${year}-${month}-${day} ${hour}:${minute}`;
+    const dayStr = `${year}-${month}-${day}`;
+    return dayStr;
   }
