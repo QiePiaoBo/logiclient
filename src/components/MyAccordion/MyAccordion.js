@@ -1,12 +1,16 @@
-import React from "react";
-import './MyAccordion.css'
+import React,{useContext} from "react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
+import GlobalContext from "../../resources/GlobalContext";
+
 
 function MyAccordion(props) {
   const { items } = props;
+  const { userId } = useContext(GlobalContext);
+  const disabledKeys = items.filter(item => item.lockFlag !== 0 && item.userId !== userId).map(item => item.id + "");
   return (
     <Accordion 
       isCompact 
+      disabledKeys={disabledKeys}
       selectionMode="single" 
       variant="splitted"
       motionProps={{
@@ -50,7 +54,7 @@ function MyAccordion(props) {
         <AccordionItem
           key={item.id}
           aria-label={item.title}
-          subtitle="Confetti"
+          subtitle={item.userName}
           title={item.title}
         >
           <div style={{ whiteSpace: 'pre-wrap' }}>{item.content}</div>

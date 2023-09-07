@@ -3,9 +3,7 @@ import {
   Navbar,
   MobileNav,
   Typography,
-  Button,
   IconButton,
-  Card,
   Breadcrumbs,
 } from "@material-tailwind/react";
 import { Link as JumpLink } from "react-router-dom";
@@ -31,6 +29,7 @@ function NewHeader() {
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
+        onClick={() => setOpenNav(false)}
       >
         <JumpLink to="/main/blog">Blog </JumpLink>
       </Typography>
@@ -39,6 +38,7 @@ function NewHeader() {
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
+        onClick={() => setOpenNav(false)}
       >
         <JumpLink to="/tool/chat">Chat </JumpLink>
       </Typography>
@@ -47,6 +47,7 @@ function NewHeader() {
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
+        onClick={() => setOpenNav(false)}
       >
         <JumpLink to="/tool/confetti">Confetti </JumpLink>
       </Typography>
@@ -55,6 +56,7 @@ function NewHeader() {
         variant="small"
         color="blue-gray"
         className="p-1 font-normal"
+        onClick={() => setOpenNav(false)}
       >{userName ? (<NextUserMenu name={userName} />) : (
         <JumpLink size="lg" to="/login">
           Login

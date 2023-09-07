@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import NextCard from "../components/NextCard";
 import GlobalContext from "../resources/GlobalContext";
 import { getUrlByEnv } from "../resources/utils"
-import FloatButton from "../components/FloatButton";
 import MaterialCard from "../components/MaterialCard";
+import MaterialFloatButton from "../components/MaterialFloatButton";
 
 function Blog() {
 
@@ -65,7 +65,7 @@ function Blog() {
           ))}
 
         </div>
-        <FloatButton jumpUrl="/main/edit/blog" />
+        <MaterialFloatButton jumpUrl="/main/edit/blog" />
       </div>
     );
   }
