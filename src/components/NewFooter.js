@@ -14,7 +14,7 @@ function NewFooter() {
           <li>
             <Typography
               as="a"
-              href="#"
+              href="https://logicer.top/main/article/18"
               color="blue-gray"
               className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
             >
@@ -24,11 +24,11 @@ function NewFooter() {
           <li>
             <Typography
               as="a"
-              href="#"
+              href="https://github.com/QiePiaoBo/logicer"
               color="blue-gray"
               className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
             >
-              License
+              GitHub
             </Typography>
           </li>
           <li>
