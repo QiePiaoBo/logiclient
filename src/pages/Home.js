@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import HomeContent from "../components/HomeContent";
 import HomeTitle from "../components/HomeTitle";
 import { getUrlByEnv } from "../resources/utils";
 import HomeTimeline from "../components/HomeTimeline";

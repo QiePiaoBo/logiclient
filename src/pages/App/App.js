@@ -1,6 +1,7 @@
 import Home from '../Home';
 import Layout from '../../Layout/Layout';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Util from '../Util';
 import Chat from '../Chat';
 import NoMatch from '../NoMatch';
 import Confetti from '../Confetti';
@@ -34,6 +35,7 @@ function App() {
             <Route index element={<Confetti />} />
             <Route path='/tool/confetti' element={<Confetti />} />
             <Route path='/tool/chat' element={<Chat />} />
+            <Route path='/tool/util' element={<Util />} />
           </Route>
           <Route path='/account/' element={<Layout />} >
             <Route path='/account/info' element={<AccountInfo />} />

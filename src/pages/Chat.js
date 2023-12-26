@@ -1,4 +1,3 @@
-import MaterialFloatButton from "../components/MaterialFloatButton";
 import NeedLoginButton from "../components/NeedLoginButton";
 import GlobalContext from "../resources/GlobalContext";
 import { useContext } from "react";
@@ -14,8 +13,7 @@ function Chat() {
                 </span>
             </div>
             {userName ? (
-                // <p>Chat Component Here</p>
-                <MaterialFloatButton jumpUrl="/main/blog"/>
+                <p>Chat Component Here</p>
             ) : (
                 <NeedLoginButton />
             )}
