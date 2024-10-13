@@ -4,7 +4,7 @@ import MyFetch from "../resources/MyFetch";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import gfm from "remark-gfm";
 
-async function getContentFromQiNiu(url) {
+async function getContentFromUrl(url) {
     const response = await fetch(url);
     const text = await response.text();
     return text;
@@ -16,8 +16,8 @@ function Article(props) {
     const [text, setText] = useState(null);
 
     useEffect(() => {
-        if (data && data.data && data.data.filePath && data.data.filePath.endsWith('.md')) {
-            getContentFromQiNiu(data.data.filePath)
+        if (data && data.data && data.data.filePath) {
+            getContentFromUrl(data.data.filePath)
                 .then(text => setText(text));
         }
     }, [data]);
